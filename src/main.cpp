@@ -1,7 +1,3 @@
-// Copyright (c) 2009-2010 Satoshi Nakamoto
-// Copyright (c) 2009-2012 The Bitcoin developers
-// Distributed under the MIT/X11 software license, see the accompanying
-// file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #include "alert.h"
 #include "checkpoints.h"
@@ -19,10 +15,6 @@
 
 using namespace std;
 using namespace boost;
-
-//
-// Global state
-//
 
 CCriticalSection cs_setpwalletRegistered;
 set<CWallet*> setpwalletRegistered; 
@@ -65,7 +57,6 @@ map<uint256, uint256> mapProofOfStake;
 map<uint256, CDataStream*> mapOrphanTransactions;
 map<uint256, map<uint256, CDataStream*> > mapOrphanTransactionsByPrev;
 
-// Constant stuff for coinbase transactions we create:
 CScript COINBASE_FLAGS;
 
 const string strMessageMagic = "FRCoin Signed Message:\n";
@@ -73,17 +64,7 @@ const string strMessageMagic = "FRCoin Signed Message:\n";
 double dHashesPerSec;
 int64 nHPSTimerStart;
 
-// Settings
 int64 nTransactionFee = MIN_TX_FEE;
-
-
-//////////////////////////////////////////////////////////////////////////////
-//
-// dispatching functions
-//
-
-// These functions dispatch to one or all registered wallets
-
 
 void RegisterWallet(CWallet* pwalletIn)
 {
@@ -110,7 +91,6 @@ bool static IsFromMe(CTransaction& tx)
     return false;
 }
 
-// get the wallet transaction with the given hash (if it exists)
 bool static GetTransaction(const uint256& hashTx, CWalletTx& wtx)
 {
     BOOST_FOREACH(CWallet* pwallet, setpwalletRegistered)
@@ -119,14 +99,12 @@ bool static GetTransaction(const uint256& hashTx, CWalletTx& wtx)
     return false;
 }
 
-// erases transaction with the given hash from all wallets
 void static EraseFromWallets(uint256 hash)
 {
     BOOST_FOREACH(CWallet* pwallet, setpwalletRegistered)
         pwallet->EraseFromWallet(hash);
 }
 
-// make sure all wallets know about the given transaction, in the given block
 void SyncWithWallets(const CTransaction& tx, const CBlock* pblock, bool fUpdate, bool fConnect)
 {
     if (!fConnect)
