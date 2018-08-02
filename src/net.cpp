@@ -43,7 +43,6 @@ struct LocalServiceInfo {
     int nPort;
 };
 
-//
 // Global state variables
 //
 bool fClient = false;
