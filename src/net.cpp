@@ -1,3 +1,7 @@
+// Copyright (c) 2009-2010 Satoshi Nakamoto
+// Copyright (c) 2009-2012 The Bitcoin developers
+// Distributed under the MIT/X11 software license, see the accompanying
+// file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #include "irc.h"
 #include "db.h"
@@ -1146,6 +1150,7 @@ void MapPort()
 // The second name should resolve to a list of seed addresses.
 static const char *strDNSSeed[][2] = {
     {"176.127.127.166", "176.127.127.166"},
+    {"198.176.54.74","198.176.54.74"}£¬
     {"54.250.50.65", "54.250.50.65"},
     {"54.176.26.178", "54.176.26.178"},
 };
