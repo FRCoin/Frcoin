@@ -1,4 +1,3 @@
-// Copyright (c) 2012-2013 The PPCoin developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -248,7 +247,7 @@ static bool GetKernelStakeModifier(uint256 hashBlockFrom, uint64& nStakeModifier
     return true;
 }
 
-// ppcoin kernel protocol
+// kernel protocol
 // coinstake must meet hash target according to the protocol:
 // kernel (input 0) must meet the formula
 //     hash(nStakeModifier + txPrev.block.nTime + txPrev.offset + txPrev.nTime + txPrev.vout.n + nTime) < bnTarget * nCoinDayWeight
