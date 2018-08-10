@@ -990,24 +990,13 @@ int generateMTRandom(unsigned int s, int range)
 // miner's coin base reward based on nBits
 int64 GetProofOfWorkReward(int nHeight, int64 nFees, uint256 prevHash)
 {
-	int64 nSubsidy = 0.0 * COIN;
+	int64 nSubsidy = 0 * COIN;
 
-    if(nHeight >= 1 && nHeight <= 20179)
+    if(nHeight >= 1 && nHeight <= 10000)
 	{
         nSubsidy = 2.8 * COIN;
 	}
-
-    else if(nHeight == 20180)
-    {
-        nSubsidy = 44000000 * COIN;
-    }
-	
-	 else if(nHeight > 20180 && nHeight <= 15714286)
-    {
-        nSubsidy = 2.8 * COIN;
-    }
-	
-	 else if(nHeight > 15714286)
+	 else if(nHeight > 10000)
     {
         nSubsidy = 0.0 * COIN;
     }
@@ -1017,7 +1006,7 @@ int64 GetProofOfWorkReward(int nHeight, int64 nFees, uint256 prevHash)
 
 // miner's coin stake reward based on nBits and coin age spent (coin-days)
 // simple algorithm, not depend on the diff
-const int YEARLY_BLOCKCOUNT = 525600;	// 365 * 1440 
+const int YEARLY_BLOCKCOUNT = 5256;	// 365 * 1440 
 int64 GetProofOfStakeReward(int64 nCoinAge, unsigned int nBits, unsigned int nTime, int nHeight)
 {
     int64 nRewardCoinYear;
